@@ -22,6 +22,79 @@
 #
 <br>
 
+```bash
+(base) dhankar@dhankar-1:~/.../original_PointRCNN$ git clone --recursive https://github.com/sshaoshuai/PointRCNN.git
+Cloning into 'PointRCNN'...
+remote: Enumerating objects: 88, done.
+remote: Total 88 (delta 0), reused 0 (delta 0), pack-reused 88
+Unpacking objects: 100% (88/88), done.
+Submodule 'pointnet2_lib' (https://github.com/sshaoshuai/Pointnet2.PyTorch.git) registered for path 'pointnet2_lib'
+Cloning into '/home/dhankar/temp/11_22/original_PointRCNN/PointRCNN/pointnet2_lib'...
+remote: Enumerating objects: 45, done.        
+remote: Total 45 (delta 0), reused 0 (delta 0), pack-reused 45        
+Submodule path 'pointnet2_lib': checked out '5a4416f51ceaeba242828cabf39133433336850d'
+(base) dhankar@dhankar-1:~/.../original_PointRCNN$ 
+```
+
+#
+<br>
+
+```bash
+(env_lyft) dhankar@dhankar-1:~/.../PointRCNN$ sh build_and_install.sh
+Traceback (most recent call last):
+  File "/home/dhankar/temp/11_22/original_PointRCNN/PointRCNN/pointnet2_lib/pointnet2/setup.py", line 2, in <module>
+    from torch.utils.cpp_extension import BuildExtension, CUDAExtension
+ModuleNotFoundError: No module named 'torch'
+Traceback (most recent call last):
+  File "/home/dhankar/temp/11_22/original_PointRCNN/PointRCNN/lib/utils/iou3d/setup.py", line 2, in <module>
+    from torch.utils.cpp_extension import BuildExtension, CUDAExtension
+ModuleNotFoundError: No module named 'torch'
+Traceback (most recent call last):
+  File "/home/dhankar/temp/11_22/original_PointRCNN/PointRCNN/lib/utils/roipool3d/setup.py", line 2, in <module>
+    from torch.utils.cpp_extension import BuildExtension, CUDAExtension
+ModuleNotFoundError: No module named 'torch'
+(env_lyft) dhankar@dhankar-1:~/.../PointRCNN$ 
+(env_lyft) dhankar@dhankar-1:~/.../PointRCNN$ conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+```
+#
+<br>
+
+#### See File -- 'Errors_Install.md'
+
+- ``` bash src/ball_query.cpp:3:10: fatal error: THC/THC.h: No such file or directory ```
+- ``` src/iou3d.cpp:7:23: error: ‘AT_CHECK’ was not declared in this scope ```
+- below could be the solution for the -- AT_CHECK
+
+
+#
+<br>
+
+_Originally posted by @guni9191 in https://github.com/mrlooi/rotated_maskrcnn/issues/31#issuecomment-631416601_
+
+        I've found out the solution. add the code below
+```
+#ifndef AT_CHECK
+#define AT_CHECK TORCH_CHECK 
+#endif
+```
+
+at the top of the two srcs,
+rotated_maskrcnn/maskrcnn_benchmark/csrc/cuda/deform_conv_cuda.cu
+rotated_maskrcnn/maskrcnn_benchmark/csrc/cuda/deform_pool_cuda.cu
+
+
+      
+
+
+#
+<br>
+
+
+#
+<br>
 
 
 #
