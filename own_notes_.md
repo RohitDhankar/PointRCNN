@@ -1,4 +1,139 @@
 
+
+cudatoolkit=
+
+
+#### https://github.com/Turoad/lanedet/issues/29
+pip install torch==1.10.0+cu102 torchvision==0.10.0+cu102 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
+
+
+pip install torch==1.10.0+cu102 torchvision==0.10.0+cu102 -f https://download.pytorch.org/whl/torch_stable.html
+
+#
+<br>
+
+#### https://stackoverflow.com/questions/72139806/pytorch-with-cuda-local-installation-fails
+- https://stackoverflow.com/questions/72139806/pytorch-with-cuda-local-installation-fails
+
+```bash
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.51.05    Driver Version: 450.51.05    CUDA Version: 11.0 
+```
+
+#
+<br>
+
+
+```bash
+$ nvcc --version
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2020 NVIDIA Corporation
+Built on Thu_Jun_11_22:26:38_PDT_2020
+Cuda compilation tools, release 11.0, V11.0.194
+Build cuda_11.0_bu.TC445_37.28540450_0
+
+```
+
+##### Do we also need -- - https://github.com/sshaoshuai/Pointnet2.PyTorch
+
+##### RuntimeError - ERROR in BUILD 
+
+RuntimeError: 
+The detected CUDA version (11.0) mismatches the version that was used to compile
+PyTorch (10.2). Please make sure to use the same CUDA versions.
+
+
+- dont run the -- /original_PointRCNN/PointRCNN/build_and_install.sh
+- RUN ALL 3 setup.py mentioned in he SHELL Script Separately 
+- cd /home/dhankar/temp/11_22/original_PointRCNN/PointRCNN/lib/utils/iou3d
+- (env_lyft) dhankar@dhankar-1:~/.../iou3d$ python setup.py install
+- Error as seen below -- CUDA and Pytorch Versions Mismatched 
+
+```bash
+(env_lyft) dhankar@dhankar-1:~/.../iou3d$ python setup.py install
+running install
+/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/command/install.py:34: SetuptoolsDeprecationWarning: setup.py install is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/command/easy_install.py:144: EasyInstallDeprecationWarning: easy_install command is deprecated. Use build and pip and other standards-based tools.
+  warnings.warn(
+running bdist_egg
+running egg_info
+writing iou3d.egg-info/PKG-INFO
+writing dependency_links to iou3d.egg-info/dependency_links.txt
+writing top-level names to iou3d.egg-info/top_level.txt
+/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/torch/utils/cpp_extension.py:381: UserWarning: Attempted to use ninja as the BuildExtension backend but we could not find ninja.. Falling back to using the slow distutils backend.
+  warnings.warn(msg.format('we could not find ninja.'))
+reading manifest file 'iou3d.egg-info/SOURCES.txt'
+writing manifest file 'iou3d.egg-info/SOURCES.txt'
+installing library code to build/bdist.linux-x86_64/egg
+running install_lib
+running build_ext
+Traceback (most recent call last):
+  File "/home/dhankar/temp/11_22/original_PointRCNN/PointRCNN/lib/utils/iou3d/setup.py", line 4, in <module>
+    setup(
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/__init__.py", line 87, in setup
+    return distutils.core.setup(**attrs)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/core.py", line 185, in setup
+    return run_commands(dist)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/core.py", line 201, in run_commands
+    dist.run_commands()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/dist.py", line 968, in run_commands
+    self.run_command(cmd)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/dist.py", line 1217, in run_command
+    super().run_command(command)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/dist.py", line 987, in run_command
+    cmd_obj.run()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/command/install.py", line 74, in run
+    self.do_egg_install()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/command/install.py", line 123, in do_egg_install
+    self.run_command('bdist_egg')
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/cmd.py", line 319, in run_command
+    self.distribution.run_command(command)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/dist.py", line 1217, in run_command
+    super().run_command(command)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/dist.py", line 987, in run_command
+    cmd_obj.run()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/command/bdist_egg.py", line 165, in run
+    cmd = self.call_command('install_lib', warn_dir=0)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/command/bdist_egg.py", line 151, in call_command
+    self.run_command(cmdname)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/cmd.py", line 319, in run_command
+    self.distribution.run_command(command)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/dist.py", line 1217, in run_command
+    super().run_command(command)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/dist.py", line 987, in run_command
+    cmd_obj.run()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/command/install_lib.py", line 11, in run
+    self.build()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/command/install_lib.py", line 112, in build
+    self.run_command('build_ext')
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/cmd.py", line 319, in run_command
+    self.distribution.run_command(command)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/dist.py", line 1217, in run_command
+    super().run_command(command)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/dist.py", line 987, in run_command
+    cmd_obj.run()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/command/build_ext.py", line 84, in run
+    _build_ext.run(self)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/command/build_ext.py", line 346, in run
+    self.build_extensions()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/torch/utils/cpp_extension.py", line 404, in build_extensions
+    self._check_cuda_version()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/torch/utils/cpp_extension.py", line 781, in _check_cuda_version
+    raise RuntimeError(CUDA_MISMATCH_MESSAGE.format(cuda_str_version, torch.version.cuda))
+RuntimeError: 
+The detected CUDA version (11.0) mismatches the version that was used to compile
+PyTorch (10.2). Please make sure to use the same CUDA versions.
+
+(env_lyft) dhankar@dhankar-1:~/.../iou3d$ 
+(env_lyft) dhankar@dhankar-1:~/.../iou3d$ 
+```
+
+
+
+
+
+
 #### This is a FORK of the Original - PointRCNN
 
 - https://github.com/sshaoshuai/PointRCNN
@@ -92,9 +227,148 @@ rotated_maskrcnn/maskrcnn_benchmark/csrc/cuda/deform_pool_cuda.cu
 #
 <br>
 
+#### -- Install Errors Probable Solution -- get Older Versions -- 
+- https://pytorch.org/get-started/previous-versions/
+
+##### CUDA 10.2
+conda install pytorch==1.10.0 torchvision==0.11.0 torchaudio==0.10.0 cudatoolkit=10.2 -c pytorch
+
+
+```bash
+(env_lyft) dhankar@dhankar-1:~/.../PointRCNN$ conda install pytorch==1.10.0 torchvision==0.11.0 torchaudio==0.10.0 cudatoolkit=10.2 -c pytorch
+
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/dhankar/anaconda3/envs/env_lyft
+
+  added / updated specs:
+    - cudatoolkit=10.2
+    - pytorch==1.10.0
+    - torchaudio==0.10.0
+    - torchvision==0.11.0
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    libuv-1.40.0               |       h7b6447c_0         736 KB
+    pytorch-1.10.0             |py3.9_cuda10.2_cudnn7.6.5_0       768.1 MB  pytorch
+    torchaudio-0.10.0          |       py39_cu102         4.5 MB  pytorch
+    torchvision-0.11.0         |       py39_cu102         8.7 MB  pytorch
+    ------------------------------------------------------------
+                                           Total:       782.0 MB
+
+The following NEW packages will be INSTALLED:
+
+  cudatoolkit        pkgs/main/linux-64::cudatoolkit-10.2.89-hfd86e86_1 None
+  libuv              pkgs/main/linux-64::libuv-1.40.0-h7b6447c_0 None
+
+The following packages will be DOWNGRADED:
+
+  pytorch                1.13.0-py3.9_cuda11.7_cudnn8.5.0_0 --> 1.10.0-py3.9_cuda10.2_cudnn7.6.5_0 None
+  torchaudio                              0.13.0-py39_cu117 --> 0.10.0-py39_cu102 None
+  torchvision                             0.14.0-py39_cu117 --> 0.11.0-py39_cu102 None
+
+
+Proceed ([y]/n)? 
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+torchvision-0.11.0   | 8.7 MB    | ################################################################################################### | 100% 
+torchaudio-0.10.0    | 4.5 MB    | ################################################################################################### | 100% 
+libuv-1.40.0         | 736 KB    | ################################################################################################### | 100% 
+pytorch-1.10.0       | 768.1 MB  | ################################################################################################### | 100% 
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+Retrieving notices: ...working... done
+(env_lyft) dhankar@dhankar-1:~/.../PointRCNN$ 
+
+
+```
 
 #
 <br>
+
+```bash
+File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/dist.py", line 1217, in run_command
+    super().run_command(command)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/dist.py", line 987, in run_command
+    cmd_obj.run()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/command/build_ext.py", line 84, in run
+    _build_ext.run(self)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/command/build_ext.py", line 346, in run
+    self.build_extensions()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/torch/utils/cpp_extension.py", line 404, in build_extensions
+    self._check_cuda_version()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/torch/utils/cpp_extension.py", line 781, in _check_cuda_version
+    raise RuntimeError(CUDA_MISMATCH_MESSAGE.format(cuda_str_version, torch.version.cuda))
+RuntimeError: 
+The detected CUDA version (11.0) mismatches the version that was used to compile
+PyTorch (10.2). Please make sure to use the same CUDA versions.
+
+```
+
+
+#
+<br>
+
+#
+
+#### DATA SUMMARY -- KITTI 3D object detection
+- https://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=3 
+#
+
+####  CALIB - CALIBRATION == data_object_calib.zip == 25.6 MB 
+- https://s3.eu-central-1.amazonaws.com/avg-kitti/data_object_calib.zip
+
+#### data >> KITTI >> object >> training_and_testing >> image_2 ==  data_object_image_2.zip 
+- https://s3.eu-central-1.amazonaws.com/avg-kitti/data_object_image_2.zip
+
+#### data >> KITTI >> object >> training_and_testing >> velodyne ==  data_object_image_2.zip 
+- https://s3.eu-central-1.amazonaws.com/avg-kitti/data_object_image_2.zip
+
+
+#
+<br>
+
+
+
+
+
+#
+<br>
+
+
+
+
+#
+<br>
+
+
+
+
+#
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #
