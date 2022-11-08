@@ -1,6 +1,438 @@
 
 
 ```bash
+lspci | grep -i nvidia
+(env_point_net) dhankar@dhankar-1:.../local$ lspci | grep -i nvidia
+01:00.0 VGA compatible controller: NVIDIA Corporation Device 1f82 (rev a1)
+01:00.1 Audio device: NVIDIA Corporation Device 10fa (rev a1)
+(env_point_net) dhankar@dhankar-1:.../local$ 
+
+#
+(env_point_net) dhankar@dhankar-1:.../local$ uname -m && cat /etc/*release
+x86_64
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=18.04
+DISTRIB_CODENAME=bionic
+DISTRIB_DESCRIPTION="Ubuntu 18.04.5 LTS"
+NAME="Ubuntu"
+VERSION="18.04.5 LTS (Bionic Beaver)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 18.04.5 LTS"
+VERSION_ID="18.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=bionic
+UBUNTU_CODENAME=bionic
+(env_point_net) dhankar@dhankar-1:.../local$ 
+#
+gcc --version
+gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0
+Copyright (C) 2017 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+uname -r
+5.4.0-131-generic
+#
+
+```
+
+##### Not done any UN-INSTALL 
+
+
+```python
+Use the following command to uninstall a Toolkit runfile installation:
+
+sudo /usr/local/cuda-X.Y/bin/cuda-uninstaller
+
+Use the following command to uninstall a Driver runfile installation:
+
+sudo /usr/bin/nvidia-uninstall
+```
+
+
+- lrwxrwxrwx  1 root    root       9 Jul 25  2020 cuda -> cuda-11.0
+
+```bash
+(env_point_net) dhankar@dhankar-1:~/.../iou3d$ cd /usr/local/
+(env_point_net) dhankar@dhankar-1:.../local$ 
+(env_point_net) dhankar@dhankar-1:.../local$ ls -lahtr
+total 355M
+drwxr-xr-x  2 root    root    4.0K Aug  6  2019 src
+drwxr-xr-x  2 root    root    4.0K Aug  6  2019 sbin
+drwxr-xr-x  2 root    root    4.0K Aug  6  2019 games
+drwxr-xr-x  4 root    root    4.0K Apr 17  2020 etc
+drwxr-xr-x  3 root    root    4.0K Jul  4  2020 aws-cli
+drwxr-xr-x 15 root    root    4.0K Jul 25  2020 cuda-11.0
+lrwxrwxrwx  1 root    root       9 Jul 25  2020 cuda -> cuda-11.0
+drwxr-xr-x  4 root    root    4.0K Jul 30  2020 man
+drwxr-xr-x  4 root    root    4.0K Jul 30  2020 doc
+drwxr-xr-x 19 root    root    4.0K Jul 30  2020 share
+drwxr-xr-x  3 root    root    4.0K Jul 30  2020 include
+drwxr-xr-x  7 root    root     12K Aug  4  2020 lib
+drwxr-xr-x 10 root    root    4.0K Dec  3  2020 go
+-rw-rw-r--  1 dhankar dhankar 355M Jan 12  2021 go1.15.6.linux-amd64.tar
+drwxr-xr-x 15 root    root    4.0K Jan 12  2021 .
+drwxr-xr-x 13 root    root    4.0K Feb 14  2021 ..
+drwxr-xr-x  2 root    root    4.0K Mar 12  2022 bin
+(env_point_net) dhankar@dhankar-1:.../local$ 
+(env_point_net) dhankar@dhankar-1:.../local$ 
+
+```
+
+
+conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
+
+
+ettle             pkgs/main/linux-64::nettle-3.7.3-hbbd107a_1 None
+  numpy              pkgs/main/linux-64::numpy-1.19.2-py36h54aff64_0 None
+  numpy-base         pkgs/main/linux-64::numpy-base-1.19.2-py36hfa32c7d_0 None
+  olefile            pkgs/main/linux-64::olefile-0.46-py36_0 None
+  openh264           pkgs/main/linux-64::openh264-2.1.1-h4ff587b_0 None
+  openjpeg           pkgs/main/linux-64::openjpeg-2.4.0-h3ad879b_0 None
+  pillow             pkgs/main/linux-64::pillow-8.3.1-py36h2c7a002_0 None
+  pytorch            pytorch/linux-64::pytorch-1.10.2-py3.6_cuda10.2_cudnn7.6.5_0 None
+  pytorch-mutex      pytorch/noarch::pytorch-mutex-1.0-cuda None
+  six                pkgs/main/noarch::six-1.16.0-pyhd3eb1b0_1 None
+  torchaudio         pytorch/linux-64::torchaudio-0.10.2-py36_cu102 None
+  torchvision        pytorch/linux-64::torchvision-0.11.3-py36_cu102 None
+  typing_extensions  pkgs/main/noarch::typing_extensions-4.1.1-pyh06a4308_0 None
+  zstd               pkgs/main/linux-64::zstd-1.5.2-ha4553b6_0 None
+
+
+Proceed ([y]/n)? y
+
+
+
+
+```bash
+
+RuntimeError: 
+The detected CUDA version (11.0) mismatches the version that was used to compile
+PyTorch (10.2). Please make sure to use the same CUDA versions.
+
+(env_point_net) dhankar@dhankar-1:~/.../iou3d$ 
+(env_point_net) dhankar@dhankar-1:~/.../iou3d$ python3 setup.py install
+/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/site-packages/torch/package/_directory_reader.py:17: UserWarning: Failed to initialize NumPy: numpy.core.multiarray failed to import (Triggered internally at  ../torch/csrc/utils/tensor_numpy.cpp:68.)
+  _dtype_to_storage = {data_type(0).dtype: data_type for data_type in _storages}
+
+--torch.cuda.is_available()-----
+ True
+
+
+running install
+running bdist_egg
+running egg_info
+writing iou3d.egg-info/PKG-INFO
+writing dependency_links to iou3d.egg-info/dependency_links.txt
+writing top-level names to iou3d.egg-info/top_level.txt
+
+/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/site-packages/torch/utils/cpp_extension.py:381: UserWarning: Attempted to use ninja as the BuildExtension backend but we could not find ninja.. Falling back to using the slow distutils backend.
+  warnings.warn(msg.format('we could not find ninja.'))
+
+
+reading manifest file 'iou3d.egg-info/SOURCES.txt'
+writing manifest file 'iou3d.egg-info/SOURCES.txt'
+installing library code to build/bdist.linux-x86_64/egg
+running install_lib
+running build_ext
+Traceback (most recent call last):
+  File "setup.py", line 20, in <module>
+    cmdclass={'build_ext': BuildExtension})
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/site-packages/setuptools/__init__.py", line 153, in setup
+    return distutils.core.setup(**attrs)
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/distutils/core.py", line 148, in setup
+    dist.run_commands()
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/distutils/dist.py", line 955, in run_commands
+    self.run_command(cmd)
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/distutils/dist.py", line 974, in run_command
+    cmd_obj.run()
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/site-packages/setuptools/command/install.py", line 67, in run
+    self.do_egg_install()
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/site-packages/setuptools/command/install.py", line 109, in do_egg_install
+    self.run_command('bdist_egg')
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/distutils/cmd.py", line 313, in run_command
+    self.distribution.run_command(command)
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/distutils/dist.py", line 974, in run_command
+    cmd_obj.run()
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/site-packages/setuptools/command/bdist_egg.py", line 164, in run
+    cmd = self.call_command('install_lib', warn_dir=0)
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/site-packages/setuptools/command/bdist_egg.py", line 150, in call_command
+    self.run_command(cmdname)
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/distutils/cmd.py", line 313, in run_command
+    self.distribution.run_command(command)
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/distutils/dist.py", line 974, in run_command
+    cmd_obj.run()
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/site-packages/setuptools/command/install_lib.py", line 11, in run
+    self.build()
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/distutils/command/install_lib.py", line 107, in build
+    self.run_command('build_ext')
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/distutils/cmd.py", line 313, in run_command
+    self.distribution.run_command(command)
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/distutils/dist.py", line 974, in run_command
+    cmd_obj.run()
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/site-packages/setuptools/command/build_ext.py", line 79, in run
+    _build_ext.run(self)
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/distutils/command/build_ext.py", line 339, in run
+    self.build_extensions()
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/site-packages/torch/utils/cpp_extension.py", line 404, in build_extensions
+    self._check_cuda_version()
+  File "/home/dhankar/anaconda3/envs/env_point_net/lib/python3.6/site-packages/torch/utils/cpp_extension.py", line 781, in _check_cuda_version
+    raise RuntimeError(CUDA_MISMATCH_MESSAGE.format(cuda_str_version, torch.version.cuda))
+RuntimeError: 
+The detected CUDA version (11.0) mismatches the version that was used to compile
+PyTorch (10.2). Please make sure to use the same CUDA versions.
+```
+
+#
+<br>
+
+
+
+
+```bash
+
+(env_point_net) dhankar@dhankar-1:~/.../iou3d$ 
+(env_point_net) dhankar@dhankar-1:~/.../iou3d$ sudo python3 setup.py install
+[sudo] password for dhankar: 
+--torch.cuda.is_available()-----
+ True
+running install
+running bdist_egg
+running egg_info
+writing iou3d.egg-info/PKG-INFO
+writing dependency_links to iou3d.egg-info/dependency_links.txt
+writing top-level names to iou3d.egg-info/top_level.txt
+/usr/local/lib/python3.6/dist-packages/torch/utils/cpp_extension.py:381: UserWarning: Attempted to use ninja as the BuildExtension backend but we could not find ninja.. Falling back to using the slow distutils backend.
+  warnings.warn(msg.format('we could not find ninja.'))
+reading manifest file 'iou3d.egg-info/SOURCES.txt'
+writing manifest file 'iou3d.egg-info/SOURCES.txt'
+installing library code to build/bdist.linux-x86_64/egg
+running install_lib
+running build_ext
+Traceback (most recent call last):
+  File "setup.py", line 20, in <module>
+    cmdclass={'build_ext': BuildExtension})
+  File "/usr/lib/python3/dist-packages/setuptools/__init__.py", line 129, in setup
+    return distutils.core.setup(**attrs)
+  File "/usr/lib/python3.6/distutils/core.py", line 148, in setup
+    dist.run_commands()
+  File "/usr/lib/python3.6/distutils/dist.py", line 955, in run_commands
+    self.run_command(cmd)
+  File "/usr/lib/python3.6/distutils/dist.py", line 974, in run_command
+    cmd_obj.run()
+  File "/usr/lib/python3/dist-packages/setuptools/command/install.py", line 67, in run
+    self.do_egg_install()
+  File "/usr/lib/python3/dist-packages/setuptools/command/install.py", line 109, in do_egg_install
+    self.run_command('bdist_egg')
+  File "/usr/lib/python3.6/distutils/cmd.py", line 313, in run_command
+    self.distribution.run_command(command)
+  File "/usr/lib/python3.6/distutils/dist.py", line 974, in run_command
+    cmd_obj.run()
+  File "/usr/lib/python3/dist-packages/setuptools/command/bdist_egg.py", line 172, in run
+    cmd = self.call_command('install_lib', warn_dir=0)
+  File "/usr/lib/python3/dist-packages/setuptools/command/bdist_egg.py", line 158, in call_command
+    self.run_command(cmdname)
+  File "/usr/lib/python3.6/distutils/cmd.py", line 313, in run_command
+    self.distribution.run_command(command)
+  File "/usr/lib/python3.6/distutils/dist.py", line 974, in run_command
+    cmd_obj.run()
+  File "/usr/lib/python3/dist-packages/setuptools/command/install_lib.py", line 24, in run
+    self.build()
+  File "/usr/lib/python3.6/distutils/command/install_lib.py", line 109, in build
+    self.run_command('build_ext')
+  File "/usr/lib/python3.6/distutils/cmd.py", line 313, in run_command
+    self.distribution.run_command(command)
+  File "/usr/lib/python3.6/distutils/dist.py", line 974, in run_command
+    cmd_obj.run()
+  File "/usr/lib/python3/dist-packages/setuptools/command/build_ext.py", line 78, in run
+    _build_ext.run(self)
+  File "/usr/lib/python3.6/distutils/command/build_ext.py", line 339, in run
+    self.build_extensions()
+  File "/usr/local/lib/python3.6/dist-packages/torch/utils/cpp_extension.py", line 404, in build_extensions
+    self._check_cuda_version()
+  File "/usr/local/lib/python3.6/dist-packages/torch/utils/cpp_extension.py", line 781, in _check_cuda_version
+    raise RuntimeError(CUDA_MISMATCH_MESSAGE.format(cuda_str_version, torch.version.cuda))
+RuntimeError: 
+The detected CUDA version (9.1) mismatches the version that was used to compile
+PyTorch (10.2). Please make sure to use the same CUDA versions.
+
+(env_point_net) dhankar@dhankar-1:~/.../iou3d$ 
+
+
+```
+
+
+
+
+#
+<br>
+
+
+
+```bash
+
+(base) dhankar@dhankar-1:~/.../original_PointRCNN$ conda create -n env_point_net python=3.6
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with repodata from current_repodata.json, will retry with next repodata source.
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+## Package Plan ##
+
+  environment location: /home/dhankar/anaconda3/envs/env_point_net
+
+  added / updated specs:
+    - python=3.6
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    certifi-2021.5.30          |   py36h06a4308_0         139 KB
+    pip-21.2.2                 |   py36h06a4308_0         1.8 MB
+    python-3.6.13              |       h12debd9_1        32.5 MB
+    setuptools-58.0.4          |   py36h06a4308_0         788 KB
+    ------------------------------------------------------------
+                                           Total:        35.2 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main None
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu None
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2022.10.11-h06a4308_0 None
+  certifi            pkgs/main/linux-64::certifi-2021.5.30-py36h06a4308_0 None
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.38-h1181459_1 None
+  libffi             pkgs/main/linux-64::libffi-3.3-he6710b0_2 None
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-11.2.0-h1234567_1 None
+  libgomp            pkgs/main/linux-64::libgomp-11.2.0-h1234567_1 None
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-11.2.0-h1234567_1 None
+  ncurses            pkgs/main/linux-64::ncurses-6.3-h5eee18b_3 None
+  openssl            pkgs/main/linux-64::openssl-1.1.1s-h7f8727e_0 None
+  pip                pkgs/main/linux-64::pip-21.2.2-py36h06a4308_0 None
+  python             pkgs/main/linux-64::python-3.6.13-h12debd9_1 None
+  readline           pkgs/main/linux-64::readline-8.2-h5eee18b_0 None
+  setuptools         pkgs/main/linux-64::setuptools-58.0.4-py36h06a4308_0 None
+  sqlite             pkgs/main/linux-64::sqlite-3.39.3-h5082296_0 None
+  tk                 pkgs/main/linux-64::tk-8.6.12-h1ccaba5_0 None
+  wheel              pkgs/main/noarch::wheel-0.37.1-pyhd3eb1b0_0 None
+  xz                 pkgs/main/linux-64::xz-5.2.6-h5eee18b_0 None
+  zlib               pkgs/main/linux-64::zlib-1.2.13-h5eee18b_0 None
+
+
+Proceed ([y]/n)? y
+
+
+Downloading and Extracting Packages
+certifi-2021.5.30    | 139 KB    | ################################################################################################### | 100% 
+python-3.6.13        | 32.5 MB   | ################################################################################################### | 100% 
+setuptools-58.0.4    | 788 KB    | ################################################################################################### | 100% 
+pip-21.2.2           | 1.8 MB    | ################################################################################################### | 100% 
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate env_point_net
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Retrieving notices: ...working... done
+(base) dhankar@dhankar-1:~/.../original_PointRCNN$ 
+(base) dhankar@dhankar-1:~/.../original_PointRCNN$ conda activate env_point_net
+(env_point_net) dhankar@dhankar-1:~/.../original_PointRCNN$ 
+(env_point_net) dhankar@dhankar-1:~/.../original_PointRCNN$ 
+(env_point_net) dhankar@dhankar-1:~/.../original_PointRCNN$ nvidia-smi
+Tue Nov  8 18:06:14 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 450.51.05    Driver Version: 450.51.05    CUDA Version: 11.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  GeForce GTX 1650    On   | 00000000:01:00.0  On |                  N/A |
+|  0%   44C    P8     4W /  75W |    299MiB /  3910MiB |      1%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      2455      G   /usr/lib/xorg/Xorg                 14MiB |
+|    0   N/A  N/A      2865      G   /usr/bin/gnome-shell               48MiB |
+|    0   N/A  N/A      4000      G   /usr/lib/xorg/Xorg                104MiB |
+|    0   N/A  N/A      4929      G   /usr/bin/gnome-shell               94MiB |
+|    0   N/A  N/A      9693      G   /usr/lib/firefox/firefox            2MiB |
+|    0   N/A  N/A     17927      G   ...RendererForSitePerProcess       30MiB |
++-----------------------------------------------------------------------------+
+(env_point_net) dhankar@dhankar-1:~/.../original_PointRCNN$ 
+(env_point_net) dhankar@dhankar-1:~/.../original_PointRCNN$ nvcc --version
+nvcc: NVIDIA (R) Cuda compiler driver
+Copyright (c) 2005-2020 NVIDIA Corporation
+Built on Thu_Jun_11_22:26:38_PDT_2020
+Cuda compilation tools, release 11.0, V11.0.194
+Build cuda_11.0_bu.TC445_37.28540450_0
+(env_point_net) dhankar@dhankar-1:~/.../original_PointRCNN$ 
+
+```
+
+
+```bash
+(env_lyft) dhankar@dhankar-1:~/.../tools$ python eval_rcnn.py --cfg_file cfgs/default.yaml --ckpt PointRCNN.pth --batch_size 1 --eval_mode rcnn --set RPN.LOC_XZ_FINE False
+Traceback (most recent call last):
+  File "/home/dhankar/temp/11_22/original_PointRCNN/PointRCNN/tools/eval_rcnn.py", line 8, in <module>
+    from lib.net.point_rcnn import PointRCNN ## MISSING-- iou3d_cuda
+  File "/home/dhankar/temp/11_22/original_PointRCNN/PointRCNN/tools/../lib/net/point_rcnn.py", line 3, in <module>
+    from lib.net.rpn import RPN
+  File "/home/dhankar/temp/11_22/original_PointRCNN/PointRCNN/tools/../lib/net/rpn.py", line 4, in <module>
+    from lib.rpn.proposal_layer import ProposalLayer
+  File "/home/dhankar/temp/11_22/original_PointRCNN/PointRCNN/tools/../lib/rpn/proposal_layer.py", line 6, in <module>
+    import lib.utils.iou3d.iou3d_utils as iou3d_utils
+  File "/home/dhankar/temp/11_22/original_PointRCNN/PointRCNN/tools/../lib/utils/iou3d/iou3d_utils.py", line 2, in <module>
+    import iou3d_cuda
+ModuleNotFoundError: No module named 'iou3d_cuda'
+
+```
+
+
+
+
+
+
+
+```bash
+File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/dist.py", line 1217, in run_command
+    super().run_command(command)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/dist.py", line 987, in run_command
+    cmd_obj.run()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/command/build_ext.py", line 84, in run
+    _build_ext.run(self)
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/setuptools/_distutils/command/build_ext.py", line 346, in run
+    self.build_extensions()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/torch/utils/cpp_extension.py", line 404, in build_extensions
+    self._check_cuda_version()
+  File "/home/dhankar/anaconda3/envs/env_lyft/lib/python3.9/site-packages/torch/utils/cpp_extension.py", line 781, in _check_cuda_version
+    raise RuntimeError(CUDA_MISMATCH_MESSAGE.format(cuda_str_version, torch.version.cuda))
+RuntimeError: 
+The detected CUDA version (11.0) mismatches the version that was used to compile
+PyTorch (10.2). Please make sure to use the same CUDA versions.
+
+```
+
+- https://mmdetection3d.readthedocs.io/en/v0.17.3/datasets/kitti_det.html#prepare-dataset
+
+
+```bash
 
 (env_lyft) dhankar@dhankar-1:~/.../PointRCNN$ 
 (env_lyft) dhankar@dhankar-1:~/.../PointRCNN$ conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
